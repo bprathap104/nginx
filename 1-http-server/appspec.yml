@@ -1,0 +1,17 @@
+version: 0.0
+os: linux
+files:
+  - source: /
+    destination: /var/www/
+hooks:
+  BeforeInstall:
+    - location: cleanup.sh
+      timeout: 180
+      runas: root
+  AfterInstall:
+    - location: dependencies.sh
+      timeout: 180
+      runas: root
+    - location: runApp.sh
+      timeout: 180
+      runas: root
